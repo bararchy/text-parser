@@ -4,7 +4,7 @@ require "./text-parser/*"
 module Text::Parser
   module Box
 
-    def self.parse(data, io=StringIO.new)
+    def self.parse(data, (io=StringIO.new) = STDOUT)
       lines = data.lines.map &.strip
       box_width = box_width = lines.max_of &.gsub(/##\w+$/, "").size
 

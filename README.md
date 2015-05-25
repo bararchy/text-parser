@@ -53,11 +53,13 @@ options(a,b)
 
 ## Development
 
-TODO: Write instructions for development
+* Add more marks
+* Improve options() parse to allow multiple options
+* Maybe try working using Cruses ? (or maybe not)
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/text-parser/fork )
+1. Fork it ( https://github.com/bararchy/text-parser/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)

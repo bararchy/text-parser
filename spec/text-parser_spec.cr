@@ -16,9 +16,9 @@ text_test_options_enter = ["(enter)",
                            "options(b,a)"].join("\r\n")
 describe "parser" do
   it "works" do
-    Text::Parser::Box.parse(text_test_colorless, STDOUT).should eq(true)
-    Text::Parser::Box.parse(text_test_colored, STDOUT).should eq(true)
-    Text::Parser::Box.parse(text_test_bold, STDOUT).should eq(true)
-    Text::Parser::Box.parse(text_test_options_enter, STDOUT).should eq(true)
+    Text::Parser::Box.parse(text_test_colorless, STDOUT).should eq(AutoflushBufferedIO)
+    Text::Parser::Box.parse(text_test_colored, STDOUT).should eq(AutoflushBufferedIO)
+    Text::Parser::Box.parse(text_test_bold, STDOUT).should eq(AutoflushBufferedIO)
+    Text::Parser::Box.parse(text_test_options_enter, STDOUT).should eq(AutoflushBufferedIO)
   end
 end

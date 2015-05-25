@@ -1,4 +1,5 @@
 require "./text-parser/*"
+require "colorize"
 
 module Text::Parser
   class ReadParser

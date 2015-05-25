@@ -16,9 +16,13 @@ text_test_options_enter = ["(enter)",
                            "options(b,a)"].join("\r\n")
 describe "parser" do
   it "works" do
-    Text::Parser::Box.parse(text_test_colorless, STDOUT).should eq(AutoflushBufferedIO)
-    Text::Parser::Box.parse(text_test_colored, STDOUT).should eq(AutoflushBufferedIO)
-    Text::Parser::Box.parse(text_test_bold, STDOUT).should eq(AutoflushBufferedIO)
-    Text::Parser::Box.parse(text_test_options_enter, STDOUT).should eq(AutoflushBufferedIO)
+    puts "Regular boxed text"    
+    Text::Parser::Box.parse(text_test_colorless, STDOUT).class.should eq(AutoflushBufferedIO(FileDescriptorIO+))
+    puts "Colored boxed text"
+    Text::Parser::Box.parse(text_test_colored, STDOUT).class.should eq(AutoflushBufferedIO(FileDescriptorIO+))
+    puts "Bold boxed text"
+    Text::Parser::Box.parse(text_test_bold, STDOUT).class.should eq(AutoflushBufferedIO(FileDescriptorIO+))
+    puts "(enter) and (a) (b) centered in a box"
+    Text::Parser::Box.parse(text_test_options_enter, STDOUT).class.should eq(AutoflushBufferedIO(FileDescriptorIO+))
   end
 end

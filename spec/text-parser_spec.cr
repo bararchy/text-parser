@@ -14,12 +14,11 @@ text_test_bold = ["Lorem ipsum dolor sit amet, liber eloquentiam quo no,##bold",
                   "Mei prima mnesarchum ne. Eum facilis expetenda ne.##bold"].join("\r\n")
 text_test_options_enter = ["(enter)",
                            "options(b,a)"].join("\r\n")
-describe Text::Parser do
-  Text::Parser::Box.parse(text_test_colorless)
-  Text::Parser::Box.parse(text_test_colored)
-  Text::Parser::Box.parse(text_test_bold)
-  Text::Parser::Box.parse(text_test_options_enter)
+describe "parser" do
   it "works" do
-    false.should eq(true)
+    Text::Parser::Box.parse(text_test_colorless, STDOUT).should eq(CFileIO)
+    Text::Parser::Box.parse(text_test_colored, STDOUT).should eq(CFileIO)
+    Text::Parser::Box.parse(text_test_bold, STDOUT).should eq(CFileIO)
+    Text::Parser::Box.parse(text_test_options_enter, STDOUT).should eq(CFileIO)
   end
 end

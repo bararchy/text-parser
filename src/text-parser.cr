@@ -69,7 +69,7 @@ module Text::Parser
           line = "#{" " * middle}(#{options[0]})  (#{options[1]})#{" " * (middle - 1)}".colorize.yellow
         end
       else
-        # signless line
+        line = line.colorize.white
       end
       return line
     end

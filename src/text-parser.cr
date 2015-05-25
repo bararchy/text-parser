@@ -40,6 +40,7 @@ module Text::Parser
 
     def self.parse_line_signs(line, max_size)
       line = line.strip
+      line_clean_size = line.size
       case line
       when /##blue/
         line = line.split("##")[0].colorize.blue
@@ -71,7 +72,7 @@ module Text::Parser
       else
         line = line.colorize.white
       end
-      return line, line.toggle(false).to_s.size
+      return line, line_clean_size
     end
   end
 end

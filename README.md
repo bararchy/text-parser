@@ -28,6 +28,8 @@ Text::Parser::Box.parse(data, STDOUT)
 
 ## Both examples will output something along those line:
 ```
+![alt text][output]
+[output]: http://screencloud.net/v/d6JV "Example output"
 
 
 The color codes are:

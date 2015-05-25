@@ -6,7 +6,7 @@ module Text::Parser
 
     def self.parse(data, io=StringIO.new)
       lines = data.lines.map &.strip
-      box_width = lines.map {|line| line.gsub(/##\w+$/, "") }.max_of &.size
+      box_width = box_width = lines.max_of &.gsub(/##\w+$/, "").size
 
       print_upper_box(io, box_width)
 

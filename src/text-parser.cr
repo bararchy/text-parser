@@ -1,74 +1,65 @@
-require "./text-parser/*"
 require "colorize"
+require "./text-parser/*"
+
 module Text::Parser
-  class ReadParser
+  module Box
 
-    def self.parse_text(data)
-      max_size = (data.strip.lines.max_of &.bytesize) - 1
-      print_upper_box(max_size)
-      data = data.lines
-      data.each do |line|
-        line, clean_size = parse_line_signs(line, max_size)
-        puts build_line(line, max_size, clean_size)
+    def self.parse(data, io=StringIO.new)
+      lines = data.lines.map &.strip
+      box_width = lines.map {|line| line.gsub(/##\w+$/, "") }.max_of &.size
+
+      print_upper_box(io, box_width)
+
+      lines.each do |line|
+        process_line(io, line, box_width)
       end
-      print_lower_box(max_size)
+
+      print_lower_box(io, box_width)
+
+      io
     end
 
-    def self.print_upper_box(max_size)
-      print " "
-      print "_" * (max_size - 1)
-      print "\r\n"
+    private def self.print_upper_box(io, box_width)
+      io.print "┌"
+      io.print "─" * (box_width + 2)
+      io.puts "┐"
     end
 
-    def self.print_lower_box(max_size)
-      print "|"
-      print "_" * ( max_size -1)
-      print "|"
-      print "\r\n"
+    private def self.print_lower_box(io, box_width)
+      io.print "└"
+      io.print "─" * (box_width + 2)
+      io.puts "┘"
     end
 
-    def self.build_line(line, max_size, clean_size)
-      String.build do |new_line|
-        new_line << "|"
-        new_line << line.rjust(line_size / 2 + text.size / 2)
-        #new_line << line
-        #new_line << " " * (max_size - clean_size + 1)
-        new_line << "|"
-      end
-    end
+    private def self.process_line(io, line, box_width)
+      padded = line.includes?("##") ? line.split("##")[0] : line
+      padded = padded.ljust(box_width + 1)
 
-
-    def self.parse_line_signs(line, max_size)
-      line = line.strip
-      line_clean_size = line.size
       case line
       when /##blue/
-        line = line.split("##")[0].colorize.blue
+        line = padded.colorize.blue
       when /##red/
-        line = line.split("##")[0].colorize.red
+        line = padded.colorize.red
       when /##yellow/
-        line = line.split("##")[0].colorize.yellow
+        line = padded.colorize.yellow
       when /##green/
-        line = line.split("##")[0].colorize.green
+        line = padded.colorize.green
       when /##bold/
-        line = line.split("##")[0].colorize.bold
+        line = padded.colorize.bold
       when /(enter)/
-        middle = (max_size - 7) / 2
-        if middle * 2 == max_size
-          line = "#{" " * middle}(enter)#{" " * middle}".colorize.yellow
-        elsif middle * 2 > max_size
-          line = "#{" " * middle}(enter)#{" " * (middle +1)}".colorize.yellow
-        elsif middle * 2 < max_size
-          line = "#{" " * middle}(enter)#{" " * (middle -1)}".colorize.yellow
-        end
+        line = center("(enter)", box_width + 1).colorize.yellow
       when /options\((.*?)\)/
-        middle = (max_size - 8) / 2
         options = $1.split(",")
-        line = center("(#{options[0]}) (#{options[1]})", max_size + 1).colorize.yellow
+        line = center("(#{options[0]}) (#{options[1]})", box_width + 1).colorize.yellow
       else
-        line = line.colorize.white
+        line = padded # signless line
       end
-      return line, line_clean_size
+
+      io.puts "│ #{line}│"
+    end
+
+    private def self.center(text, line_size)
+      text.rjust(line_size / 2 + text.size / 2).ljust(line_size)
     end
   end
 end

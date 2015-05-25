@@ -21,31 +21,15 @@ end
 require "text-parser"
 
 ## Pass String from file:
-Text::Parser::ReadParser.parse_text(File.read("./data/prologue.en/prologue_2.data"))
+Text::Parser::Box.parse(File.read("./data/prologue.en/prologue_2.data"), STDOUT)
 
 ## Pass String as object
-Text::Parser::ReadParser.parse_text(data)
+Text::Parser::Box.parse(data, STDOUT)
 
 ## Both examples will output something along those line:
 ```
 
-```
- _______________________________________________________________________________________________________
-|                                                                                                       |
-|The flowers bloomed all over the horizon, hot, blazing, like hundreds of small suns.                   |
-|Ripples of dust and scorched air burned everything in their path.                                      |
-|You can feel the waves of invisible fire getting closer...your skin begins to burn..                   |
-|                                                                                                       |
-|Wake up !                                                                                              |
-|                                                                                                       |
-|You feel you are being shaken, thrown through the air, rocks and pebbles hit you with tremendous force.|
-|                                                                                                       |
-|Wake Up I said !                                                                                       |
-|                                                                                                       |
-|                                                (enter)                                                |
-|_______________________________________________________________________________________________________|
 
-```
 The color codes are:
 ```
 ##color

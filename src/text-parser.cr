@@ -1,6 +1,5 @@
 require "./text-parser/*"
 require "colorize"
-
 module Text::Parser
   class ReadParser
 
@@ -31,6 +30,8 @@ module Text::Parser
     def self.build_line(line, max_size)
       String.build do |new_line|
         new_line << "|"
+        #new_line << line.toggle(false).ljust(max_size)
+        new_line << line
         new_line << " " * (max_size - (line.toggle(false).size) + 1)
         new_line << "|"
       end

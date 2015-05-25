@@ -30,7 +30,7 @@ module Text::Parser
     def self.build_line(line, max_size)
       String.build do |new_line|
         new_line << "|"
-        new_line << line.to_s.rjust(max_size - (line.to_s.size) + 1)
+        new_line << line.to_s.ljust(max_size - (line.to_s.size) + 1)
         #new_line << " " * (max_size - (line.to_s.size) + 1)
         new_line << "|"
       end

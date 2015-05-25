@@ -30,9 +30,9 @@ module Text::Parser
     def self.build_line(line, max_size, clean_size)
       String.build do |new_line|
         new_line << "|"
-        #new_line << line.toggle(false).ljust(max_size)
-        new_line << line
-        new_line << " " * (max_size - clean_size + 1)
+        new_line << line.rjust(line_size / 2 + text.size / 2)
+        #new_line << line
+        #new_line << " " * (max_size - clean_size + 1)
         new_line << "|"
       end
     end
@@ -64,11 +64,7 @@ module Text::Parser
       when /options\((.*?)\)/
         middle = (max_size - 8) / 2
         options = $1.split(",")
-        if middle * 2 == max_size
-          line = "#{" " * middle}(#{options[0]})  (#{options[1]})#{" " * middle}".colorize.yellow
-        else
-          line = "#{" " * middle}(#{options[0]})  (#{options[1]})#{" " * (middle - 1)}".colorize.yellow
-        end
+        line = center("(#{options[0]}) (#{options[1]})", max_size + 1).colorize.yellow
       else
         line = line.colorize.white
       end

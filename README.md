@@ -67,5 +67,5 @@ options(a,b)
 
 ## Contributors
 
-- [bararchy](https://github.com/bararchy) bararchy - creator, maintainer
+- [bararchy](https://github.com/bararchy) bararchy - Creator, Maintainer
 - [jhass](https://github.com/jhass) jhass - Contributer

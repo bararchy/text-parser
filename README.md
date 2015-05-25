@@ -66,3 +66,4 @@ TODO: Write instructions for development
 ## Contributors
 
 - [bararchy](https://github.com/bararchy) bararchy - creator, maintainer
+- [jhass](https://github.com/jhass) jhass - Contributer

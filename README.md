@@ -28,9 +28,7 @@ Text::Parser::Box.parse(data, STDOUT)
 
 ## Both examples will output something along those line:
 ```
-![alt text][output]
-
-[output]: http://screencloud.net/v/d6JV "Example output"
+![](https://sc-cdn.scaleengine.net/i/fe0fa0a258eecc6b6af37b97287b55b11.png)
 
 
 The color codes are:

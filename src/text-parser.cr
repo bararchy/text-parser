@@ -31,8 +31,7 @@ module Text::Parser
     def self.build_line(line, max_size)
       String.build do |new_line|
         new_line << "|"
-        new_line << line.ljust(max_size)
-        #new_line << " " * (max_size - (line.to_s.size) + 1)
+        new_line << " " * (max_size - (line.toggle(false).to_s.size) + 1)
         new_line << "|"
       end
     end
@@ -71,7 +70,7 @@ module Text::Parser
       else
         # signless line
       end
-      return line.to_s
+      return line
     end
   end
 end

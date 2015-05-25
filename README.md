@@ -1,6 +1,9 @@
 # text-parser
 
-TODO: Write a description here for library
+The text-parse lib is a part of another project of mine (https://github.com/bararchy/mos_game).
+I decided to export it so I can use it in another projects.
+
+The point of this lib is to get String data, parse it using specific symbols, and print it to the console in colors, bold, and you can even print it inside a box.
 
 ## Installation
 
@@ -8,7 +11,7 @@ Add it to `Projectfile`
 
 ```crystal
 deps do
-  github "[your-github-name]/text-parser"
+  github "bararchy/text-parser"
 end
 ```
 

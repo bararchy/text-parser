@@ -8,8 +8,8 @@ module Text::Parser
       print_upper_box(max_size)
       data = data.lines
       data.each do |line|
-        line = parse_line_signs(line, max_size)
-        puts build_line(line, max_size)
+        line, clean_size = parse_line_signs(line, max_size)
+        puts build_line(line, max_size, clean_size)
       end
       print_lower_box(max_size)
     end
@@ -27,12 +27,12 @@ module Text::Parser
       print "\r\n"
     end
 
-    def self.build_line(line, max_size)
+    def self.build_line(line, max_size, clean_size)
       String.build do |new_line|
         new_line << "|"
         #new_line << line.toggle(false).ljust(max_size)
         new_line << line
-        new_line << " " * (max_size - (line.toggle(false).size) + 1)
+        new_line << " " * (max_size - clean_size + 1)
         new_line << "|"
       end
     end
@@ -71,7 +71,7 @@ module Text::Parser
       else
         line = line.colorize.white
       end
-      return line
+      return line, line.toggle(false).to_s.size
     end
   end
 end

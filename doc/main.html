@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>text-parser</h1>
+
+<p>The text-parse lib is a part of another project of mine (https://github.com/bararchy/mos_game).
+I decided to export it so I can use it in another projects.</p>
+
+<p>The point of this lib is to get String data, parse it using specific symbols, and print it to the console in colors, bold, and you can even print it inside a box.</p>
+
+<h2>Installation</h2>
+
+<p>Add it to <code>Projectfile</code></p>
+
+<pre><code>deps <span class="k">do</span>
+  github <span class="s">"bararchy/text-parser"</span>
+<span class="k">end</span></code></pre>
+
+<h2>Usage</h2>
+
+<pre><code><span class="k">require</span> <span class="s">"text-parser"</span>
+
+<span class="c">## Pass String from file:</span>
+<span class="t">Text</span><span class="t">::</span><span class="t">Parser</span><span class="t">::</span><span class="t">Box</span>.parse(<span class="t">File</span>.read(<span class="s">"./data/prologue.en/prologue_2.data"</span>), <span class="t">STDOUT</span>)
+
+<span class="c">## Pass String as object</span>
+<span class="t">Text</span><span class="t">::</span><span class="t">Parser</span><span class="t">::</span><span class="t">Box</span>.parse(data, <span class="t">STDOUT</span>)
+
+<span class="c">## Both examples will output something along those line:</span></code></pre>
+
+<p><img src="https://sc-cdn.scaleengine.net/i/fe0fa0a258eecc6b6af37b97287b55b11.png" alt=""/></p>
+
+<p>The color codes are:</p>
+
+<pre><code><span class="c">##color</span>
+
+<span class="k">as</span> <span class="k">in</span>:
+text<span class="c">##red</span>
+
+will output the word <span class="s">"text"</span> ind red</code></pre>
+
+<p>Right now the supported colors are:</p>
+
+<pre><code><span class="c">##blue</span>
+<span class="c">##red</span>
+<span class="c">##yellow</span>
+<span class="c">##green</span>
+<span class="c">##bold</span>
+(enter)
+options(a,b)</code></pre>
+
+<h2>Development</h2>
+
+<ul><li>Add more marks</li><li>Improve options() parse to allow multiple options</li><li>Maybe try working using Cruses ? (or maybe not)</li></ul>
+
+<h2>Contributing</h2>
+
+<ol><li>Fork it ( https://github.com/bararchy/text-parser/fork )</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
+
+<h2>Contributors</h2>
+
+<p>- <a href="https://github.com/bararchy" target="_blank">bararchy</a> bararchy - Creator, Maintainer
+- <a href="https://github.com/jhass" target="_blank">jhass</a> jhass - Contributer</p>
+</body>
+</html>
